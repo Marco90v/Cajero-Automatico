@@ -1,0 +1,27 @@
+<html ng-app="Cajero">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    </head>
+    <header>
+        <h1>Cajero Automatico</h1>
+    </header>
+    <body ng-controller="contenedor">
+        <h2>Seleccione el Tipo de Moneda</h2>
+        <input type="radio" value="Dolar" ng-model="Dolar"> Dolar <br/>
+        <input type="radio" value="Euro" ng-model="Euro"> Euro <br/>
+        <input type="radio" value="Soles" ng-model="Soles"> Soles <br/>
+        <h2>Ingrese Monto a Retirar</h2>
+        <input type="number" value="0.00" ng-model="Dinero" >
+        <input type="button" value="Retirar" ng-click="Retirar()">
+        <br/>
+        <div>
+            <h3>Efectivo Disponible</h3>
+            <br/>
+ 
+        </div>
+        <div ng-repeat="i in res">
+            {{res}}
+        </div>
+    </body>
+    <script type="text/javascript" src="C_a.js"></script>
+</html>
