@@ -14,14 +14,22 @@
         <input type="number" value="0.00" ng-model="Dinero" >
         <input type="button" value="Retirar" ng-click="Retirar()">
         <br/>
+
         <div>
-            <h3>Efectivo Disponible</h3>
-            <br/>
- 
-        </div>
-        <div ng-repeat="i in res">
-            {{res}}
-        </div>
+            <h3>Area de Sistema / Efectivo Disponible</h3>
+            <table ng-repeat="(c,v) in res">
+                <thead>
+                    <tr>
+                        <td>Tipo de Moneda: <strong>{{c}}</strong></td>
+                    </tr>
+                </thead>
+                <tr ng-repeat="(c2,v2) in v">
+                    <td><strong>Valor:</strong> {{v2.v}}</td>
+                    <td><strong>Catidad:</strong> {{v2.c}}</td>
+                </tr>
+            </table>
+        </div> 
+
     </body>
     <script type="text/javascript" src="C_a.js"></script>
 </html>
