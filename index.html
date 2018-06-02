@@ -7,17 +7,21 @@
     </header>
     <body ng-controller="contenedor">
         <h2>Seleccione el Tipo de Moneda</h2>
-        <input type="radio" value="Dolar" ng-model="Dolar"> Dolar <br/>
-        <input type="radio" value="Euro" ng-model="Euro"> Euro <br/>
-        <input type="radio" value="Soles" ng-model="Soles"> Soles <br/>
-        <h2>Ingrese Monto a Retirar</h2>
-        <input type="number" value="0.00" ng-model="Dinero" >
-        <input type="button" value="Retirar" ng-click="Retirar()">
+        <form>
+            <input type="radio" name="moneda" value="Dolares" ng-model="moneda"> Dolar <br/>
+            <input type="radio" name="moneda" value="Euros" ng-model="moneda"> Euro <br/>
+            <input type="radio" name="moneda" value="Soles" ng-model="moneda"> Soles <br/>
+            <h2>Ingrese Monto a Retirar</h2>
+            <input type="number" value="0"  ng-model="Dinero" >
+            <input type="button" value="Retirar" ng-click="Retirar()">
+            <br/>
+            <label><strong>Mensaje del Cajero:</strong> {{res}}</label>
+        </form>
         <br/>
 
         <div>
             <h3>Area de Sistema / Efectivo Disponible</h3>
-            <table ng-repeat="(c,v) in res">
+            <table ng-repeat="(c,v) in bill">
                 <thead>
                     <tr>
                         <td>Tipo de Moneda: <strong>{{c}}</strong></td>
@@ -26,6 +30,9 @@
                 <tr ng-repeat="(c2,v2) in v">
                     <td><strong>Valor:</strong> {{v2.v}}</td>
                     <td><strong>Catidad:</strong> {{v2.c}}</td>
+                </tr>
+                <tr>
+                    <td>Total: {{totalActual( c )}} </td>
                 </tr>
             </table>
         </div> 
