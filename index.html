@@ -27,12 +27,12 @@
                         <td>Tipo de Moneda: <strong>{{c}}</strong></td>
                     </tr>
                 </thead>
-                <tr ng-repeat="(c2,v2) in v">
+                <tr ng-repeat="v2 in v">
                     <td><strong>Valor:</strong> {{v2.v}}</td>
                     <td><strong>Catidad:</strong> {{v2.c}}</td>
                 </tr>
                 <tr>
-                    <td>Total: {{totalActual( c )}} </td>
+                    <td>Total: {{totalActual(c)}} </td>
                 </tr>
             </table>
         </div> 
