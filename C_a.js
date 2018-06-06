@@ -24,29 +24,6 @@ var Billetes={
 
 var cant = 0;
 var rest = 0;
-var rB = {
-    "Dolares":[
-        {"c":0,"v":200},
-        {"c":0,"v":100},
-        {"c":0,"v":50},
-        {"c":0,"v":20},
-        {"c":0,"v":10}
-    ],
-    "Euros":[
-        {"c":0,"v":200},
-        {"c":0,"v":100},
-        {"c":0,"v":50},
-        {"c":0,"v":20},
-        {"c":0,"v":10}
-    ],
-    "Soles":[
-        {"c":0,"v":200},
-        {"c":0,"v":100},
-        {"c":0,"v":50},
-        {"c":0,"v":20},
-        {"c":0,"v":10}
-    ]
-};;
 
 var cajero = angular.module('Cajero',[]);
 cajero.controller('contenedor',function($scope){
@@ -85,16 +62,30 @@ cajero.controller('contenedor',function($scope){
                         rest = cant - Billetes[$scope.moneda][B].c;
                         cant = cant - rest;
                     }
-                    rB[$scope.moneda][B].c = rB[$scope.moneda][B].c + cant;
                     $scope.Dinero = $scope.Dinero - (cant * Billetes[$scope.moneda][B].v);
                     Billetes[$scope.moneda][B].c = Billetes[$scope.moneda][B].c - cant;
                     if($scope.Dinero == 0){
-                        if(Billetes[$scope.moneda][B].c <= 0){
+                        /*if(Billetes[$scope.moneda][B].c <= 0){
                             delete Billetes[$scope.moneda][B];
-                        }
+                        }*/
+                        /*for(var i in Billetes[$scope.moneda]){
+                            if(Billetes[$scope.moneda][i].c<= 0){
+                                console.log("C "+Billetes[$scope.moneda][i].c + " V "+Billetes[$scope.moneda][i].v);
+                                delete Billetes[$scope.moneda][i];
+                            }
+                            //T_A = T_A + (Billetes[$scope.moneda][i].c * Billetes[$scope.moneda][i].v);  
+                        }*/
+                        $scope.res="Transaccion Exitosa";
                         break;
                     }
                 }
+            }
+            for(var i in Billetes[$scope.moneda]){
+                if(Billetes[$scope.moneda][i].c<= 0){
+                    console.log("C "+Billetes[$scope.moneda][i].c + " V "+Billetes[$scope.moneda][i].v);
+                    delete Billetes[$scope.moneda][i];
+                }
+                //T_A = T_A + (Billetes[$scope.moneda][i].c * Billetes[$scope.moneda][i].v);  
             }
         }
     }

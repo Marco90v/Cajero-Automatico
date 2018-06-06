@@ -21,15 +21,15 @@
 
         <div>
             <h3>Area de Sistema / Efectivo Disponible</h3>
-            <table ng-repeat="(c,v) in bill">
+            <table ng-repeat="(c,v) in bill track by $index">
                 <thead>
                     <tr>
                         <td>Tipo de Moneda: <strong>{{c}}</strong></td>
                     </tr>
                 </thead>
-                <tr ng-repeat="v2 in v">
-                    <td><strong>Valor:</strong> {{v2.v}}</td>
-                    <td><strong>Catidad:</strong> {{v2.c}}</td>
+                <tr ng-repeat="valor in v track by $index">
+                    <td><strong>Valor:</strong> {{valor.v}}</td>
+                    <td><strong>Catidad:</strong> {{valor.c}}</td>
                 </tr>
                 <tr>
                     <td>Total: {{totalActual(c)}} </td>
