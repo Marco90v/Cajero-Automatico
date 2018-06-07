@@ -1,42 +1,50 @@
 <html ng-app="Cajero">
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     </head>
     <header>
-        <h1>Cajero Automatico</h1>
+        <h1 class="text-center">Cajero Automatico</h1>
     </header>
     <body ng-controller="contenedor">
-        <h2>Seleccione el Tipo de Moneda</h2>
-        <form>
-            <input type="radio" name="moneda" value="Dolares" ng-model="moneda"> Dolar <br/>
-            <input type="radio" name="moneda" value="Euros" ng-model="moneda"> Euro <br/>
-            <input type="radio" name="moneda" value="Soles" ng-model="moneda"> Soles <br/>
-            <h2>Ingrese Monto a Retirar</h2>
-            <input type="number" value="0"  ng-model="Dinero" >
-            <input type="button" value="Retirar" ng-click="Retirar()">
-            <br/>
-            <label><strong>Mensaje del Cajero:</strong> {{res}}</label>
-        </form>
-        <br/>
-
-        <div>
-            <h3>Area de Sistema / Efectivo Disponible</h3>
-            <table ng-repeat="(c,v) in bill track by $index">
-                <thead>
-                    <tr>
-                        <td>Tipo de Moneda: <strong>{{c}}</strong></td>
-                    </tr>
-                </thead>
-                <tr ng-repeat="valor in v track by $index">
-                    <td><strong>Valor:</strong> {{valor.v}}</td>
-                    <td><strong>Catidad:</strong> {{valor.c}}</td>
-                </tr>
-                <tr>
-                    <td>Total: {{totalActual(c)}} </td>
-                </tr>
-            </table>
-        </div> 
-
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2>Seleccione el Tipo de Moneda</h2>
+                    <form>
+                        <div class="radio" ng-repeat="(a,b) in bill">
+                            <label><input type="radio" name="moneda" value="{{a}}" ng-model="$parent.moneda">{{a}}</label>
+                        </div>
+                        <h2>Ingrese Monto a Retirar</h2>
+                        <input type="number" value="0"  ng-model="Dinero" >
+                        <input type="button" value="Retirar" ng-click="Retirar()">
+                        <br/>
+                        <label><strong>Mensaje del Cajero:</strong> {{res}}</label>
+                    </form>
+                </div>
+        
+                <div class="col">
+                    <h3>Area de Sistema / Efectivo Disponible</h3>
+                    <table class="table table-bordered table-condensed table-striped" ng-repeat="(c,v) in bill track by $index">
+                        <thead>
+                            <tr>
+                                <td>Tipo de Moneda: <strong>{{c}}</strong></td>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="valor in v track by $index">
+                            <td><strong>Valor:</strong> {{valor.v}}</td>
+                            <td><strong>Catidad:</strong> {{valor.c}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total: {{totalActual(c)}} </td>
+                        </tr>
+                    </table>
+                </div> 
+            </div>
+        </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script type="text/javascript" src="C_a.js"></script>
 </html>

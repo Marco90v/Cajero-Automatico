@@ -43,8 +43,7 @@ cajero.controller('contenedor',function($scope){
             $scope.res="Tipo de Moneda no Seleccionada";
         }
         else if($scope.Dinero==null||$scope.Dinero=="" ){
-            $scope.res="No se a Ingresado Monto";
-            
+            $scope.res="No se a Ingresado Monto"; 
         }else if($scope.Dinero<10){
             $scope.res="Monto minimo es 10 "+$scope.moneda;
         }
@@ -65,27 +64,10 @@ cajero.controller('contenedor',function($scope){
                     $scope.Dinero = $scope.Dinero - (cant * Billetes[$scope.moneda][B].v);
                     Billetes[$scope.moneda][B].c = Billetes[$scope.moneda][B].c - cant;
                     if($scope.Dinero == 0){
-                        /*if(Billetes[$scope.moneda][B].c <= 0){
-                            delete Billetes[$scope.moneda][B];
-                        }*/
-                        /*for(var i in Billetes[$scope.moneda]){
-                            if(Billetes[$scope.moneda][i].c<= 0){
-                                console.log("C "+Billetes[$scope.moneda][i].c + " V "+Billetes[$scope.moneda][i].v);
-                                delete Billetes[$scope.moneda][i];
-                            }
-                            //T_A = T_A + (Billetes[$scope.moneda][i].c * Billetes[$scope.moneda][i].v);  
-                        }*/
                         $scope.res="Transaccion Exitosa";
                         break;
                     }
                 }
-            }
-            for(var i in Billetes[$scope.moneda]){
-                if(Billetes[$scope.moneda][i].c<= 0){
-                    console.log("C "+Billetes[$scope.moneda][i].c + " V "+Billetes[$scope.moneda][i].v);
-                    delete Billetes[$scope.moneda][i];
-                }
-                //T_A = T_A + (Billetes[$scope.moneda][i].c * Billetes[$scope.moneda][i].v);  
             }
         }
     }
